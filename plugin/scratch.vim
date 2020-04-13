@@ -1,7 +1,8 @@
 " File: scratch.vim
-" Author: Yegappan Lakshmanan (yegappan AT yahoo DOT com)
+" Original Author: Yegappan Lakshmanan (yegappan AT yahoo DOT com)
+" Forked By: jymen Hafeez <aymennh@gmail.com>
 " Version: 1.0
-" Last Modified: June 3, 2003
+" Last Modified: 12 April, 2020
 "
 " Overview
 " --------
