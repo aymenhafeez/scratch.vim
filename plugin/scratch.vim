@@ -49,7 +49,7 @@ endif
 let loaded_scratch=1
 
 " Scratch buffer name
-let ScratchBufferName = "__Scratch__"
+let ScratchBufferName = "_*scratch*_"
 
 " ScratchBufferOpen
 " Open the scratch buffer
@@ -84,7 +84,7 @@ function! s:ScratchBufferOpen(new_win)
         else
             " Create a new scratch buffer
             if split_win
-                exe "split +buffer" . scr_bufnum
+                exe "11split +buffer" . scr_bufnum
             else
                 exe "buffer " . scr_bufnum
             endif
@@ -101,7 +101,7 @@ function! s:ScratchMarkBuffer()
     setlocal buflisted
 endfunction
 
-autocmd BufNewFile __Scratch__ call s:ScratchMarkBuffer()
+autocmd BufNewFile _*scratch*_ call s:ScratchMarkBuffer()
 
 " Command to edit the scratch buffer in the current window
 command! -nargs=0 Scratch call s:ScratchBufferOpen(0)
