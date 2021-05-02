@@ -5,7 +5,10 @@
 " Location:        https://github.com/aymenhafeez/scratch.vim/
 " Last Modified:   16 April, 2020
 
-" TODO : Make vim doc file
+- 
+" TODO : 
+"   * Make vim doc file
+"   * Add toggle functionality to more quickly close scratch buffer
 
 if exists('loaded_scratch') || &cp
     finish
@@ -13,7 +16,7 @@ endif
 let loaded_scratch=1
 
 if !exists('split_size')
-    let split_size = 11
+    let split_size = 13
 endif
 
 if !exists('split_direction')
@@ -54,7 +57,7 @@ function! s:ScratchBufferOpen(new_win)
         else
             " Create a new scratch buffer
             if split_win
-                exe g:split_direction .  g:split_size . "split +buffer" . scr_bufnum
+                exe g:split_direction . g:split_size . "split +buffer" . scr_bufnum
             else
                 exe "buffer " . scr_bufnum
             endif

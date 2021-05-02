@@ -19,7 +19,7 @@ When you quit/exit Vim, the contents of the scratch buffer will be lost.
 You will not be prompted to save the contents of the modified scratch
 buffer.
 
-You can have only one scratch buffer open in a single Vim instance. If the
+You can only have one scratch buffer open in a single Vim instance. If the
 current buffer has unsaved modifications, then the scratch buffer will be
 opened in a new window
 
@@ -34,15 +34,17 @@ COMMANDS
 OPTIONS
 
 `g:split_size`                 Set the size of the split-window created by
-                             `:Sscratch`. This is set to 11 by default.
+                             `:Sscratch`. This is set to 13 by default.
 
 `g:split_direction`            Set the direction in which the split window is
                              opened. This is set to 'aboveleft' by default.
                              Other possible options are in line with Vim's
-                             split commands: 'vertical', 'leftabove',
-                             'rightbelow', 'topleft' and 'bottomright'. Where
-                             these windows appear will be influenced by the
-                             'splitbelow' and 'splitright' options.
+                             split commands: vert[ical], lefta[bove],
+                             rightb[elow], to[pleft] and bo[tright].
+                             Where these windows appear will be influenced by
+                             the 'splitbelow' and 'splitright' options;
+                             setting this to lefta[above] or rightb[elow]
+                             will overrule 'splitbelow' and 'splitright'.
                                 
 
  vim:tw=78:et:ft=help:norl:
