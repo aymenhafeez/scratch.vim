@@ -20,7 +20,7 @@ You can use the following command to open/edit the scratch buffer:
 
       :Scratch
 
-To open the scratch buffer in a new split window, use the following command:
+To toggle the scratch buffer in a new split window, use the following command:
 
       :Sscratch
 

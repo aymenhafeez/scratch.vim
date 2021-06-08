@@ -29,7 +29,7 @@ COMMANDS
 :Scratch                     Open/edit the scratch buffer in a new window.
 
                                                                 *:Sscratch*
-:Sscratch                    Open/edit the scratch buffer in a split window.
+:Sscratch                    toggle the scratch buffer in a split window.
 
 OPTIONS
 
