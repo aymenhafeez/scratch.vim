@@ -1,14 +1,9 @@
 " File: scratch.vim
 " Original Author: Yegappan Lakshmanan (yegappan AT yahoo DOT com)
 " Forked By:       Aymen Hafeez (aymennh AT gmail DOT com)
-" Version:         1.1
+" Version:         1.2
 " Location:        https://github.com/aymenhafeez/scratch.vim/
-" Last Modified:   16 April, 2020
-
-- 
-" TODO : 
-"   * Make vim doc file
-"   * Add toggle functionality to more quickly close scratch buffer
+" Last Modified:   8 June, 2021
 
 if exists('loaded_scratch') || &cp
     finish
@@ -24,6 +19,33 @@ if !exists('split_direction')
 endif
 
 let ScratchBufferName = "\\*scratch\\*"
+
+" Go to scratch buffer if it exists
+function! s:ScratchGoToScratchBuffer(scratch_buffer_name)
+    " -1 returned if the buffer doesn't exist
+    if bufwinnr(bufnr(a:scratch_buffer_name)) != -1
+        exe bufwinnr(bufnr(a:scratch_buffer_name)) . "wincmd w"
+        return 1
+    else
+        return 0
+    endif
+endfunction
+
+" Check if the scratch buffer is open
+function! s:ScratchCheckIfOpen()
+    if bufwinnr(bufnr(g:ScratchBufferName)) != -1
+        return 1
+    else
+        return 0
+    endif
+endfunction
+
+" If the scratch buffer is open go to it and close the buffer
+function! s:ScratchClose()
+    if s:ScratchGoToScratchBuffer(g:ScratchBufferName)
+        quit
+    endif
+endfunction
 
 " Open the scratch buffer
 function! s:ScratchBufferOpen(new_win)
@@ -65,6 +87,15 @@ function! s:ScratchBufferOpen(new_win)
     endif
 endfunction
 
+" Toggle open and close the scratch buffer
+function! s:ScratchToggle()
+    if s:ScratchCheckIfOpen()
+        call s:ScratchClose()
+    else
+        call s:ScratchBufferOpen(1)
+    endif
+endfunction
+
 " ScratchMarkBuffer
 " Mark a buffer as scratch
 function! s:ScratchMarkBuffer()
@@ -81,5 +112,5 @@ autocmd BufNewFile \*scratch\* call s:ScratchMarkBuffer()
 " Command to edit the scratch buffer in the current window
 command! -nargs=0 Scratch call s:ScratchBufferOpen(0)
 " Command to open the scratch buffer in a new split window
-command! -nargs=0 Sscratch call s:ScratchBufferOpen(1)
+command! -nargs=0 Sscratch call s:ScratchToggle()
 
